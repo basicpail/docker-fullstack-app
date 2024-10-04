@@ -1,4 +1,4 @@
-version: "2.4"
+version: "3"
 
 services:
   frontend:
@@ -16,10 +16,10 @@ services:
     container_name: "server"
     ports:
       - "80:80"
-    # mem_limit: 128m
-    # links:
-    #   - frontend
-    #   - backend
+    mem_limit: 128m
+    links:
+      - frontend
+      - backend
   
   backend:
     image: "basicpail93/docker-backend-app"
