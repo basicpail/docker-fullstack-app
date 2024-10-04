@@ -16,10 +16,10 @@ services:
     container_name: "server"
     ports:
       - "80:80"
-    mem_limit: 128m
-    links:
-      - frontend
-      - backend
+    # mem_limit: 128m
+    # links:
+    #   - frontend
+    #   - backend
   
   backend:
     image: "basicpail93/docker-backend-app"
@@ -27,12 +27,12 @@ services:
     volumes:
       - /home/ssg/app/node_modules
       - ./backend:/home/ssg/app
-    environment:
-      MYSQL_HOST: docker-fullstack-mysql.cni8y2mss2gr.ap-northeast-2.rds.amazonaws.com
-      MYSQL_USER: root
-      MYSQL_ROOT_PASSWORD: basicpail
-      MYSQL_DATABASE: myapp
-      MYSQL_PORT: 3306
+    environment: 
+      MYSQL_HOST: $MYSQL_HOST 
+      MYSQL_USER: $MYSQL_USER 
+      MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
+      MYSQL_DATABASE: $MYSQL_DATABASE
+      MYSQL_PORT: $MYSQL_PORT  
     mem_limit: 128m
 
 # version: "3"
