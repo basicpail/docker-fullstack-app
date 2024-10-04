@@ -21,3 +21,15 @@ after_success:
   - docker push basicpail93/docker-frontend-app
   - docker push basicpail93/docker-backend-app
   - docker push basicpail93/docker-server-app
+
+deploy:
+  provider: elasticbeanstalk
+  region: "ap-northeast-2"
+  app: "docker-fullstack-app"
+  env: "Docker-fullstack-app-env"
+  bucket_name: elasticbeanstalk-ap-northeast-2-242201304740
+  bucket_path: "docker-fullstack-app"
+  on:
+    branch: aws
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_ACCESS_KEY
